@@ -28,6 +28,8 @@
 
     <button class="add" id="add" style="display:none;">+</button>
 
+    <!---------------------------------------------------------------------------------------------------------------------------------------------------->
+
     <div id="inserir_cliente">
         <div class="content">
             <h2>Adicionar Novo Registro</h2>
@@ -80,7 +82,7 @@
                     <input type="text" id="nome_estagiario" name="nome_estagiario" required>
                 </div>
                 <div class="form-group">
-                          <label for="data_nascimento">Data de Nascimento</label>
+                    <label for="data_nascimento">Data de Nascimento</label>
                     <input type="data" id="data_nascimento" name="data_nascimento" required></input>
                 </div>
                 <div class="form-group">
@@ -103,6 +105,41 @@
             </form>
         </div>
     </div>
+
+    <div id="alterar_estagiario" style="display: none;">
+        <div class="content_estagiario">
+            <h2>Adicionar Novo Registro</h2>
+            <form id="form_alterar_estagiario">
+                <div class="form-group">
+                    <label for="nome_estagiario">Nome Estagiario</label>
+                    <input type="text" id="nome_estagiario" name="nome_estagiario" required>
+                </div>
+                <div class="form-group">
+                    <label for="data_nascimento">Data de Nascimento</label>
+                    <input type="data" id="data_nascimento" name="data_nascimento" required></input>
+                </div>
+                <div class="form-group">
+                    <label for="telefone">Telefone</label>
+                    <input type="number" id="telefone" name="telefone" required></input>
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" required></data>
+                </div>
+
+                <div class="form-group">
+                    <label for="id_empresa">ID da Empresa</label>
+                    <input type="number" id="id_empresa" name="id_empresa" required></input>
+                </div>
+                <div class="buttons">
+                    <button type="submit" id="enviar_dados_estagiario" class="alterar">Salvar</button>
+                    <button type="button" id="close_alterar_estagiario" class="excluir">Fechar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!---------------------------------------------------------------------------------------------------------------------------------------------------->
 
     <div id="inserir_empresa">
         <div class="content_empresa">
@@ -127,6 +164,32 @@
             </form>
         </div>
     </div>
+
+    <div id="alterar_empresa">
+        <div class="content_empresa">
+            <h2>Adicionar Novo Registro</h2>
+            <form id="form_alterar_empresa">
+                <div class="form-group">
+                    <label for="nome_empresa">Nome Empresa</label>
+                    <input type="text" id="nome_empresa" name="nome_empresa" required>
+                </div>
+                <div class="form-group">
+                    <label for="cnpj">CNPJ</label>
+                    <input type="number" id="cnpj" name="cnpj" required></input>
+                </div>
+                <div class="form-group">
+                    <label for="id_cliente_empresa">ID_Cliente_Empresa</label>
+                    <input type="number" id="id_cliente_empresa" name="id_cliente_empresa" required></input>
+                </div>
+                <div class="buttons">
+                    <button type="submit" id="enviar_dados_empresa" class="alterar">Salvar</button>
+                    <button type="button" id="close_alterar_empresa" class="excluir">Fechar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!---------------------------------------------------------------------------------------------------------------------------------------------------->
 
     <script>
         // < obtendo tabela selecionada >

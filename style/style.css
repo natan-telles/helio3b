@@ -216,7 +216,7 @@ button.alterar:hover {
     position: relative;
 }
 
-#alterar_cliente {
+#alterar_cliente, #alterar_empresa, #alterar_estagiario {
     display: none; /* Oculta a div por padrão */
     /*visibility: hidden;*/
     position: fixed; /* Fixa a posição da div na tela */
@@ -233,7 +233,7 @@ button.alterar:hover {
 }
 
 /* Estilo para o conteúdo da div */
-#alterar_cliente .content {
+#alterar_cliente .content, #alterar_empresa .content_empresa, #alterar_estagiario .content_estagiario {
     background: #fff;
     color: #000;
     padding: 20px;
