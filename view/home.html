@@ -57,11 +57,11 @@
             <h2>Alterar Registro</h2>
             <form id="form_alterar_cliente">
                 <div class="form-group">
-                    <label for="alterar_nome_cliente">Novo Cliente</label>
+                    <label for="alterar_nome_cliente">Alterar Cliente</label>
                     <input type="text" id="alterar_nome_cliente" name="alterar_nome_cliente" required>
                 </div>
                 <div class="form-group">
-                    <label for="alterar_pedido_cliente">Pedido do Cliente</label>
+                    <label for="alterar_pedido_cliente">Alterar pedido do Cliente</label>
                     <textarea id="alterar_pedido_cliente" name="alterar_pedido_cliente" rows="4" required></textarea>
                 </div>
                 <div class="buttons">
@@ -204,6 +204,7 @@
         let tabelaAtual = document.getElementById("select").value
         let botaoAdd = document.getElementById("add")
         let select = document.getElementById("select")
+        let botaoAlterar = document.getElementById("alterar")
 
         select.onchange = function () {
             let tabela = document.getElementById("select").value
@@ -242,6 +243,7 @@
     <script src="../script/insertDisplay.js"></script>
     <script src="../script/alterarDisplay.js"></script>
     <script src="../script/carregarCSV.js"></script>
+    <script src="../script/alterarDados.js"></script>
 
 </body>
 
