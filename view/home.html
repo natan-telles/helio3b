@@ -43,6 +43,8 @@
                     <textarea id="pedidoCliente" name="pedidoCliente" rows="4" required></textarea>
                 </div>
                 <div class="buttons">
+                    <input type="file" name="csv" id="csv">
+                    <button id="enviar_csv" class="csv">Enviar CSV</button>
                     <button type="submit" id="enviar_dados_cliente" class="alterar">Salvar</button>
                     <button type="button" id="close_inserir_cliente" class="excluir">Fechar</button>
                 </div>
@@ -99,6 +101,8 @@
                     <input type="number" id="id_empresa" name="id_empresa" required></input>
                 </div>
                 <div class="buttons">
+                    <input type="file" name="csv" id="csv">
+                    <button id="enviar_csv" class="csv">Enviar CSV</button>
                     <button type="submit" id="enviar_dados_estagiario" class="alterar">Salvar</button>
                     <button type="button" id="close_inserir_estagiario" class="excluir">Fechar</button>
                 </div>
@@ -158,6 +162,8 @@
                     <input type="number" id="id_cliente_empresa" name="id_cliente_empresa" required></input>
                 </div>
                 <div class="buttons">
+                    <input type="file" name="csv" id="csv">
+                    <button id="enviar_csv" class="csv">Enviar CSV</button>
                     <button type="submit" id="enviar_dados_empresa" class="alterar">Salvar</button>
                     <button type="button" id="close_inserir_empresa" class="excluir">Fechar</button>
                 </div>
@@ -235,6 +241,7 @@
     <script src="../script/adicionarRegistro.js"></script>
     <script src="../script/insertDisplay.js"></script>
     <script src="../script/alterarDisplay.js"></script>
+    <script src="../script/carregarCSV.js"></script>
 
 </body>
 

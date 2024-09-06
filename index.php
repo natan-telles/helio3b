@@ -24,6 +24,10 @@
     $roteador->post("/estagiarios",function(){
         require_once("controle/controle_estagiario_create.php");
     });
+
+    $roteador->post("/estagiarios/csv",function(){
+        require_once("controle/controle_estagiario_create_csv.php");
+    });
     
     $roteador->put("/estagiarios/(\d+)",function($id){
         require_once("controle/controle_estagiario_update.php");
@@ -47,6 +51,10 @@
         require_once("controle/controle_empresa_create.php");
     });
     
+    $roteador->post("/empresas/csv",function(){
+        require_once("controle/controle_empresa_create_csv.php");
+    });
+    
     $roteador->put("/empresas/(\d+)",function($id){
         require_once("controle/controle_empresa_update.php");
     }); 
@@ -67,6 +75,10 @@
 
     $roteador->post("/clientes",function(){
         require_once("controle/controle_cliente_create.php");
+    });
+
+    $roteador->post("/clientes/csv",function(){
+        require_once ("controle/controle_cliente_create_csv.php");
     });
     
     $roteador->put("/clientes/(\d+)",function($id){

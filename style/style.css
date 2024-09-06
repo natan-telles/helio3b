@@ -168,6 +168,20 @@ button.alterar:hover {
     background-color: #1976d2;
 }
 
+.csv {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.csv:hover {
+    background-color: #45a049;
+}
+
 /* Ajuste de layout para os botões de resposta */
 #resposta {
     margin-top: 20px;
