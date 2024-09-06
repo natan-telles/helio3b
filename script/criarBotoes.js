@@ -42,7 +42,7 @@ function criarBotoes() {
     alterar.onclick = function () {
         let divItem = alterar.parentNode.parentNode.textContent;
         let objJson = divItem.slice(divItem.indexOf("{"), divItem.indexOf("}") + 1)
-        //console.log(objJson)
+        console.log(objJson)
         objJson = JSON.parse(objJson)
 
         let id
@@ -55,14 +55,21 @@ function criarBotoes() {
         }
         let tela = document.getElementById('alterar_cliente')
         tela.style.display = "block"
-        let novo_cliente = document.getElementById('alterar_nome_cliente').value
-        let novo_pedido = document.getElementById('alterar_pedido_cliente').value
-        let alterarJSON = {
-            "nomeCliente": novo_cliente,
-            "pedidoCliente": novo_pedido
+
+        let botao_alterar_dados_cliente = document.getElementById("alterar_dados_cliente");
+        botao_alterar_dados_cliente.onclick = function (event){
+            event.preventDefault();        
+            alterarDados(id);
         }
+    }
 
+    
 
+    let botao_close_alterar_cliente = document.getElementById("close_alterar_cliente");
+    botao_close_alterar_cliente.onclick = function (event){
+        event.preventDefault();
+        let tela = document.getElementById('alterar_cliente')
+        tela.style.display = "none"
     }
 
     //span para os botoes

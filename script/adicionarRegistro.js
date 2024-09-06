@@ -43,7 +43,7 @@ function adicionarCliente() {
     }).then((response) => {
         return response.json(); // Se o servidor retornar JSON
     }).then((textoJson) => {
-        //console.log("Dados recebidos: ", textoJson);
+        console.log("Dados recebidos: ", textoJson);
         carregarClientes()
         alert("Registro inserido com sucesso!");
     }).catch((error) => {

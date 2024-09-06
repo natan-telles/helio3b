@@ -18,10 +18,10 @@ function excluirRegistro(divItem, id) {
             'Content-Type': 'application/json'
         }
     }).then((response) => {
-        //return response.json()
         alert("Excluido com sucesso")
+        return response.json()        
     }).then((textoJson) => {
-        //console.log(textoJson.dados)
+        console.log(textoJson.dados)
     }).catch((error) => {
         console.log("Erro: ", error)
     })
