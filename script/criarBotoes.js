@@ -48,18 +48,35 @@ function criarBotoes() {
         let id
         if (tabelaAtual == "clientes") {
             id = objJson.id_cliente
+            let tela = document.getElementById('alterar_cliente')
+            tela.style.display = "block"
         } else if (tabelaAtual == "estagiarios") {
             id = objJson.id_estagiario
+            let tela = document.getElementById('alterar_estagiario')
+            tela.style.display = "block"
         } else if (tabelaAtual == "empresas") {
             id = objJson.id_empresa
+            let tela = document.getElementById('alterar_empresa')
+            tela.style.display = "block"
         }
-        let tela = document.getElementById('alterar_cliente')
-        tela.style.display = "block"
+        
 
         let botao_alterar_dados_cliente = document.getElementById("alterar_dados_cliente");
         botao_alterar_dados_cliente.onclick = function (event){
             event.preventDefault();        
-            alterarDados(id);
+            alterarRegistro(id);
+        }
+
+        let botao_alterar_dados_empresa = document.getElementById("alterar_dados_empresa");
+        botao_alterar_dados_empresa.onclick = function (event){
+            event.preventDefault();        
+            alterarRegistro(id);
+        }
+
+        let botao_alterar_dados_estagiario = document.getElementById("alterar_dados_estagiario");
+        botao_alterar_dados_estagiario.onclick = function (event){
+            event.preventDefault();        
+            alterarRegistro(id);
         }
     }
 
@@ -69,6 +86,20 @@ function criarBotoes() {
     botao_close_alterar_cliente.onclick = function (event){
         event.preventDefault();
         let tela = document.getElementById('alterar_cliente')
+        tela.style.display = "none"
+    }
+
+    let botao_close_alterar_empresa = document.getElementById("close_alterar_empresa");
+    botao_close_alterar_empresa.onclick = function (event){
+        event.preventDefault();
+        let tela = document.getElementById('alterar_empresa')
+        tela.style.display = "none"
+    }
+
+    let botao_close_alterar_estagiario = document.getElementById("close_alterar_estagiario");
+    botao_close_alterar_estagiario.onclick = function (event){
+        event.preventDefault();
+        let tela = document.getElementById('alterar_estagiario')
         tela.style.display = "none"
     }
 

@@ -96,9 +96,9 @@ class Empresa implements JsonSerializable
     public function update()
     {
         $conexao = Banco::getConexao();
-        $sql = "UPDATE empresas SET nome_empresa = ? WHERE id_empresa = ?;";
+        $sql = "UPDATE empresas SET nome_empresa = ?, cnpj = ? WHERE id_empresa = ?;";
         $prepareSql = $conexao->prepare($sql);
-        $prepareSql->bind_param("si", $this->nome_empresa, $this->id_empresa);
+        $prepareSql->bind_param("ssi", $this->nome_empresa, $this->cnpj,$this->id_empresa);
         $executou = $prepareSql->execute();
         return $executou;
     }

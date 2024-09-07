@@ -11,7 +11,7 @@ $objEmpresa->setCnpj($objJson->cnpjEmpresa);
 $objEmpresa->setIdClienteEmpresa($objJson->idClienteEmpresa);
 
 if ($objEmpresa->getNomeEmpresa() == "" || strlen($objEmpresa->getNomeEmpresa()) < 3 || 
-    $objEmpresa->getCnpj() == "" || $objEmpresa->getIdClienteEmpresa() == "") {
+    $objEmpresa->getCnpj() == "" || $objEmpresa->getIdClienteEmpresa() == "" || strlen($objEmpresa->getCnpj()<18)) {
     $objResposta->cod = 2;
     $objResposta->status = false;
     $objResposta->mensagem = "Por favor insira dados validos";
