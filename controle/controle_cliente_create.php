@@ -1,4 +1,6 @@
 <?php
+use Firebase\JWT\MeuTokenJWT;
+require_once "modelo/MeuTokenJWT.php";
 require_once "modelo/Banco.php";
 require_once "modelo/Cliente.php";
 $txtrecebido = file_get_contents("php://input");
@@ -18,18 +20,29 @@ if ($objCliente->getNomeCliente() == "" || strlen($objCliente->getNomeCliente())
     $objResposta->status = false;
     $objResposta->mensagem = "Cliente ja cadastrado";
 } else {
-    if ($objCliente->create() == true) {
-        $objResposta->cod = 1;
-        $objResposta->status = true;
-        $objResposta->mensagem = "cadastrado com sucesso";
-        $objResposta->novoCliente = $objCliente;
-        $objResposta->id = $objCliente->getIdCliente();
-    } else {
+    $headers = getallheaders();
+    $authorization = $headers['Authorization'];
+    $token = new MeuTokenJWT();
+    if($token->validarToken($authorization)){
+        if ($objCliente->create() == true) {
+            $objResposta->cod = 1;
+            $objResposta->status = true;
+            $objResposta->mensagem = "cadastrado com sucesso";
+            $objResposta->novoCliente = $objCliente;
+            $objResposta->id = $objCliente->getIdCliente();
+        } else {
+            $objResposta->cod = 2;
+            $objResposta->status = false;
+            $objResposta->mensagem = "Erro ao cadastrar cliente";
+        }
+    }else{
         $objResposta->cod = 2;
         $objResposta->status = false;
-        $objResposta->mensagem = "Erro ao cadastrar cliente";
+        $objResposta->mensagem = "Token invalido!";
+        $objResposta->tokenRecebido = $authorization;
     }
 }
+    
 
 header("Content-Type: application/json");
 if ($objResposta->status == true) {

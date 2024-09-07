@@ -41,10 +41,12 @@ function alterarRegistro(id) {
         };
 
         console.log(alterar_cliente)
+        let token = localStorage.getItem('token')
         fetch(uri, {
             method: "PUT",
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization' : 'Bearer ' + token
             },
             body: JSON.stringify(alterar_cliente)
         }).then((response) => {
@@ -71,21 +73,21 @@ function alterarRegistro(id) {
         let data_nascimento = document.getElementById("alterar_data_nascimento").value;
         let telefone = document.getElementById("alterar_telefone").value;
         let email = document.getElementById("alterar_email").value;
-        let id_empresa = document.getElementById("alterar_id_empresa").value;
 
         let alterar_estagiario = {
             nome_estagiario: nome,
             data_nascimento: data_nascimento,
             telefone: telefone,
-            email: email,
-            id_empresa: parseInt(id_empresa)
+            email: email
         };
 
         console.log(alterar_estagiario)
+        let token = localStorage.getItem('token')
         fetch(uri, {
             method: "PUT",
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization' : 'Bearer ' + token
             },
             body: JSON.stringify(alterar_estagiario)
         }).then((response) => {
@@ -121,10 +123,12 @@ function alterarRegistro(id) {
                 };
 
                 //console.log(alterar_empresa)
+                let token = localStorage.getItem('token')
                 fetch(uri, {
                     method: "PUT",
                     headers: {
-                        'Content-Type': 'application/json'
+                        'Content-Type': 'application/json',
+                        'Authorization' : 'Bearer ' + token
                     },
                     body: JSON.stringify(alterar_empresa)
                 }).then((response) => {

@@ -129,9 +129,9 @@ class Estagiario implements JsonSerializable
     public function update()
     {
         $conexao = Banco::getConexao();
-        $sql = "UPDATE estagiarios SET nome_estagiario = ?,data_nascimento = ?, telefone = ?, email = ?, id_empresa = ? WHERE id_estagiario = ?;";
+        $sql = "UPDATE estagiarios SET nome_estagiario = ?,data_nascimento = ?, telefone = ?, email = ? WHERE id_estagiario = ?;";
         $prepareSql = $conexao->prepare($sql);
-        $prepareSql->bind_param("ssssii", $this->nome_estagiario,$this->data_nascimento,$this->telefone,$this->email, $this->id_empresa, $this->id_estagiario);
+        $prepareSql->bind_param("ssssi", $this->nome_estagiario,$this->data_nascimento,$this->telefone,$this->email, $this->id_estagiario);
         $executou = $prepareSql->execute();
         return $executou;
     }

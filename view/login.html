@@ -143,7 +143,7 @@
                 if (textoJson.status) {
                     alert("Login realizado com sucesso!");
                     window.location.href = "home.html"
-                    localStorage.setItem('token',JSON.stringify(textoJson.token))
+                    localStorage.setItem('token',(textoJson.token).trim()) //trim para remover as aspas do token
                 } else {
                     alert("Credenciais inválidas!");
                 }

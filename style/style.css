@@ -185,7 +185,7 @@ button.alterar:hover {
 /* Ajuste de layout para os botões de resposta */
 #resposta {
     margin-top: 20px;
-    max-width: 800px;
+    max-width: 1200px;
 }
 
 #resposta div {
@@ -286,4 +286,9 @@ button.alterar:hover {
 
 .buttons button {
     margin-left: 10px;
+}
+
+th,td {
+    text-align: left;
+    padding: 10px;
 }

@@ -1,9 +1,11 @@
 function carregarClientes() {
     const uri = "/clientes"
+    let token = localStorage.getItem('token')
     fetch(uri, {
         method: "GET",
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization' : 'Bearer ' + token
         }
     }).then((response) => {
         return response.json()
@@ -17,10 +19,12 @@ function carregarClientes() {
 
 function carregarEmpresas() {
     const uri = "/empresas"
+    let token = localStorage.getItem('token')
     fetch(uri, {
         method: "GET",
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization' : 'Bearer ' + token
         }
     }).then((response) => {
         return response.json()
@@ -34,10 +38,12 @@ function carregarEmpresas() {
 
 function carregarEstagiarios() {
     const uri = "/estagiarios"
+    let token = localStorage.getItem('token')
     fetch(uri, {
         method: "GET",
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization' : 'Bearer ' + token
         }
     }).then((response) => {
         return response.json()

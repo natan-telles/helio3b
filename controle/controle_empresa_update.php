@@ -1,4 +1,6 @@
 <?php
+use Firebase\JWT\MeuTokenJWT;
+require_once "modelo/MeuTokenJWT.php";
 require_once "modelo/Banco.php";
 require_once "modelo/Empresa.php";
 $txtrecebido = file_get_contents("php://input");
@@ -16,15 +18,25 @@ if ($objEmpresa->getNomeEmpresa() == "" || strlen($objEmpresa->getNomeEmpresa())
     $objResposta->status = false;
     $objResposta->mensagem = "Por favor insira dados validos";
 } else {
-    if ($objEmpresa->update() == true) {
-        $objResposta->cod = 1;
-        $objResposta->status = true;
-        $objResposta->mensagem = "Empresa atualizado com sucesso";
-        $objResposta->novoEmpresa = $objEmpresa;
-    } else {
+    $headers = getallheaders();
+    $authorization = $headers['Authorization'];
+    $token = new MeuTokenJWT();
+    if($token->validarToken($authorization)){
+        if ($objEmpresa->update() == true) {
+            $objResposta->cod = 1;
+            $objResposta->status = true;
+            $objResposta->mensagem = "Empresa atualizado com sucesso";
+            $objResposta->novoEmpresa = $objEmpresa;
+        } else {
+            $objResposta->cod = 2;
+            $objResposta->status = false;
+            $objResposta->mensagem = "Erro ao atualizar Empresa";
+        }
+    }else{
         $objResposta->cod = 2;
         $objResposta->status = false;
-        $objResposta->mensagem = "Erro ao atualizar Empresa";
+        $objResposta->mensagem = "Token invalido!";
+        $objResposta->tokenRecebido = $authorization;
     }
 }
 

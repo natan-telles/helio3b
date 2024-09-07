@@ -34,10 +34,13 @@ function adicionarCliente() {
 
     // Fetch -> inserindo no banco
     let uri = "/clientes";
+    let token = localStorage.getItem('token')
+    //console.log("Token do localStorage: " + token.trim())
     fetch(uri, {
         method: "POST",
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
         },
         body: JSON.stringify(novo_cliente)
     }).then((response) => {
@@ -72,10 +75,13 @@ function adicionarEstagiario() {
 
     // Fetch -> inserindo no banco
     let uri = "/estagiarios";
+    let token = localStorage.getItem('token')
+    //console.log("Token do localStorage: " + token.trim())
     fetch(uri, {
         method: "POST",
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
         },
         body: JSON.stringify(estagiario)
     }).then((response) => {
@@ -95,9 +101,9 @@ function adicionarEmpresa() {
     let idClienteEmpresa = document.getElementById("id_cliente_empresa").value;
 
     let empresa = {
-        novaEmpresa : nome,
-        cnpjEmpresa : cnpj,
-        idClienteEmpresa : parseInt(idClienteEmpresa)
+        novaEmpresa: nome,
+        cnpjEmpresa: cnpj,
+        idClienteEmpresa: parseInt(idClienteEmpresa)
     }
     console.log(empresa)
 
@@ -105,10 +111,13 @@ function adicionarEmpresa() {
 
     // Fetch -> inserindo no banco
     let uri = "/empresas";
+    let token = localStorage.getItem('token')
+    //console.log("Token do localStorage: " + token.trim())
     fetch(uri, {
         method: "POST",
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
+            'Authorization': "Bearer " + token
         },
         body: JSON.stringify(empresa)
     }).then((response) => {
