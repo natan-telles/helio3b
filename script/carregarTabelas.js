@@ -1,4 +1,4 @@
-function carregarClientes() {
+function carregarClientes(filtro) {
     const uri = "/clientes"
     let token = localStorage.getItem('token')
     fetch(uri, {
@@ -11,13 +11,13 @@ function carregarClientes() {
         return response.json()
     }).then((textoJson) => {
         //console.log(textoJson.dados) //dados retornados da API
-        inserirDados(textoJson.dados)
+        inserirDados(textoJson.dados,filtro)
     }).catch((error) => {
         console.log("Erro: ", error)
     })
 }
 
-function carregarEmpresas() {
+function carregarEmpresas(filtro) {
     const uri = "/empresas"
     let token = localStorage.getItem('token')
     fetch(uri, {
@@ -30,13 +30,13 @@ function carregarEmpresas() {
         return response.json()
     }).then((textoJson) => {
         //console.log(textoJson.dados) //dados retornados da API
-        inserirDados(textoJson.dados)
+        inserirDados(textoJson.dados,filtro)
     }).catch((error) => {
         console.log("Erro: ", error)
     })
 }
 
-function carregarEstagiarios() {
+function carregarEstagiarios(filtro) {
     const uri = "/estagiarios"
     let token = localStorage.getItem('token')
     fetch(uri, {
@@ -49,7 +49,7 @@ function carregarEstagiarios() {
         return response.json()
     }).then((textoJson) => {
         //console.log(textoJson.dados) //dados retornados da API
-        inserirDados(textoJson.dados)
+        inserirDados(textoJson.dados,filtro)
     }).catch((error) => {
         console.log("Erro: ", error)
     })

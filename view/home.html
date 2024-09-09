@@ -22,6 +22,11 @@
         </select>
     </div>
 
+    <div class="filtro">
+        Filtro
+        <input type="text" id="filtro">
+    </div>
+
     <div id="resposta">
 
     </div>
@@ -196,6 +201,33 @@
         let botaoAdd = document.getElementById("add")
         let select = document.getElementById("select")
         let botaoAlterar = document.getElementById("alterar")
+        let filtro = document.getElementById("filtro")
+
+        function carregarDados() {
+            const tabelaSelecionada = select.value;
+            const filtroValor = filtro.value;
+
+            // Verifica qual tabela está selecionada e chama a função correspondente
+            switch (tabelaSelecionada) {
+                case 'estagiarios':
+                    carregarEstagiarios(filtroValor);
+                    break;
+                case 'empresas':
+                    carregarEmpresas(filtroValor);
+                    break;
+                case 'clientes':
+                    carregarClientes(filtroValor);
+                    break;
+                default:
+                    console.log("Selecione uma tabela para carregar dados.");
+                    break;
+            }
+        }
+
+        filtro.onkeyup = function(){
+            carregarDados()
+        }
+
 
         select.onchange = function () {
             let tabela = document.getElementById("select").value
