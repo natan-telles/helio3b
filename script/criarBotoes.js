@@ -5,27 +5,35 @@ function criarBotoes() {
     excluir.className = "excluir";
 
     excluir.onclick = function () {
-        if(confirm("Deseja realmente exlcuir?")){
+        //let divItem = excluir.parentNode.parentNode.parentNode.textContent;
+        //console.log(divItem)
+
+        if (confirm("Deseja realmente exlcuir?")) {
             let tr = excluir.closest("tr"); // Encontra o tr mais próximo
-        if (tr) {
-            let jsonData = tr.querySelector("td[data-json]");
-            if (jsonData) {
-                let objJson = JSON.parse(jsonData.getAttribute("data-json"));
-                let id;
-                if (tabelaAtual === "clientes") {
-                    id = objJson.id_cliente;
-                } else if (tabelaAtual === "estagiarios") {
-                    id = objJson.id_estagiario;
-                } else if (tabelaAtual === "empresas") {
-                    id = objJson.id_empresa;
+            if (tr) {
+                let jsonData = tr.querySelector("td[data-json]");
+                if (jsonData) {
+                    let objJson = JSON.parse(jsonData.getAttribute("data-json"));
+
+                    console.log(objJson)
+
+                    let id;
+                    if (tabelaAtual == "clientes") {
+                        id = parseInt(objJson.id_cliente);
+                        console.log(id)
+                    } else if (tabelaAtual == "estagiarios") {
+                        id = objJson.id_estagiario;
+                    } else if (tabelaAtual == "empresas") {
+                        id = objJson.id_empresa;
+                    }
+                    //console.log(id)
+                    excluirRegistro(tr, id);
+                } else {
+                    console.error("Dados JSON não encontrados na linha.");
                 }
-                excluirRegistro(tr, id);
             } else {
-                console.error("Dados JSON não encontrados na linha.");
+                console.error("Elemento <tr> não encontrado.");
             }
-        } else {
-            console.error("Elemento <tr> não encontrado.");
-        }
         }
     }
 
@@ -33,6 +41,7 @@ function criarBotoes() {
     let alterar = document.createElement("button");
     alterar.textContent = "Alterar";
     alterar.className = "alterar";
+    alterar.id = "alterar"
 
     alterar.onclick = function () {
         let tr = alterar.closest("tr"); // Encontra o tr mais próximo

@@ -229,10 +229,33 @@
         }
 
 
+        function carregarDados() {
+            const tabelaSelecionada = select.value;
+            const filtroValor = filtro.value;
+
+            // Verifica qual tabela está selecionada e chama a função correspondente
+            switch (tabelaSelecionada) {
+                case 'estagiarios':
+                    carregarEstagiarios(filtroValor);
+                    break;
+                case 'empresas':
+                    carregarEmpresas(filtroValor);
+                    break;
+                case 'clientes':
+                    carregarClientes(filtroValor);
+                    break;
+                default:
+                    console.log("Selecione uma tabela para carregar dados.");
+                    break;
+            }
+        }
+
+        filtro.onkeyup = function(){
+            carregarDados()
+        }
+        
         select.onchange = function () {
             let tabela = document.getElementById("select").value
-            tabelaAtual = tabela
-
             //console.log("tabela atual: " + tabela)
 
             if (tabela == "") {
@@ -256,6 +279,7 @@
                 botaoAdd.style.display = "block"
             }
         }
+
     </script>
 
     <script src="../script/carregarTabelas.js"></script>

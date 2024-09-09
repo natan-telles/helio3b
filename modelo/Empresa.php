@@ -3,8 +3,8 @@ require_once "modelo/Banco.php";
 class Empresa implements JsonSerializable
 {
     private $id_empresa;
-    private $id_cliente_empresa;
     private $nome_empresa;
+    private $id_cliente_empresa;
     private $cnpj;
     public function jsonSerialize() : mixed
     {
@@ -106,7 +106,7 @@ class Empresa implements JsonSerializable
     public function readById()
     {
         $conexao = Banco::getConexao();
-        $sql = "SELECT id_empresa, id_cliente_empresa, nome_empresa, cnpj FROM empresas WHERE id_empresa = ?";
+        $sql = "SELECT id_empresa, nome_empresa, id_cliente_empresa,cnpj FROM empresas WHERE id_empresa = ?";
         $prepareSql = $conexao->prepare($sql);
         $prepareSql->bind_param("i", $this->id_empresa);
         $executou = $prepareSql->execute();
@@ -116,8 +116,8 @@ class Empresa implements JsonSerializable
 
         $empresa = new Empresa();
         $empresa->setIdEmpresa($tuplaBanco->id_empresa);
-        $empresa->setIdClienteEmpresa($tuplaBanco->id_cliente_atual);
         $empresa->setNomeEmpresa($tuplaBanco->nome_empresa);
+        $empresa->setIdClienteEmpresa($tuplaBanco->id_cliente_atual);
         $empresa->setCnpj($tuplaBanco->cnpj);
 
         $prepareSql->close(); // Feche o statement para liberar os recursos
@@ -127,7 +127,7 @@ class Empresa implements JsonSerializable
     public function readAll()
     {
         $conexao = Banco::getConexao();
-        $sql = "SELECT * FROM empresas ORDER BY id_empresa;";
+        $sql = "SELECT id_empresa,nome_empresa,id_cliente_empresa,cnpj FROM empresas ORDER BY id_empresa;";
         $prepareSql = $conexao->prepare($sql);
         $prepareSql->execute();
 
@@ -137,8 +137,8 @@ class Empresa implements JsonSerializable
         while ($tuplaBanco = $matrizResultados->fetch_object()) {
             $empresas = new Empresa();
             $empresas->setIdEmpresa($tuplaBanco->id_empresa);
-            $empresas->setIdClienteEmpresa($tuplaBanco->id_cliente_atual);
             $empresas->setNomeEmpresa($tuplaBanco->nome_empresa);
+            $empresas->setIdClienteEmpresa($tuplaBanco->id_cliente_atual);
             $empresas->setCnpj($tuplaBanco->cnpj);
             $empresas_array[$i] = $empresas;
             $i = $i + 1;
